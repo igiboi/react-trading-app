@@ -14,10 +14,14 @@ export const App: React.FC = (): JSX.Element => {
     },
   });
 
+  const handleDrawerToggle = React.useCallback(() => {
+    // toggle drawer here
+  }, [])
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-        <AppBarComponent />
+        <AppBarComponent handleDrawerToggle={handleDrawerToggle} />
     </ThemeProvider>
   );
 };
