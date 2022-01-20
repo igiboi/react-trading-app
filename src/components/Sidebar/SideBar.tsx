@@ -1,5 +1,25 @@
 import React from "react";
 import { Divider, Drawer, IconButton, Typography } from "@mui/material";
+import { styled, useTheme } from "@mui/material/styles";
+import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
+import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+
+
+const DrawerHeader = styled("div")(({ theme }) => ({
+  display: "flex",
+  alignItems: "center",
+  padding: theme.spacing(0, 1),
+  ...theme.mixins.toolbar,
+  justifyContent: "flex-end",
+}));
+
+const LogoStyled = styled("div")(({ theme }) => ({
+  display: "flex",
+  alignItems: "center",
+  padding: theme.spacing(0, 1),
+  ...theme.mixins.toolbar,
+  justifyContent: "flex-start",
+}));
 
 interface Props {
   isOpen: boolean;
@@ -13,6 +33,7 @@ export const SideBar: React.FC<Props> = ({
   children,
   handleDrawerToggle,
 }): JSX.Element => {
+    const theme = useTheme();
   return (
     <>
       <Drawer
@@ -27,7 +48,23 @@ export const SideBar: React.FC<Props> = ({
         variant="persistent"
         anchor="left"
         open={isOpen}
-      ></Drawer>
+      >
+        {" "}
+        <DrawerHeader>
+          <LogoStyled>
+            <Typography variant="subtitle2" component="div" align="left">
+              Repo Logo
+            </Typography>
+          </LogoStyled>
+          <IconButton onClick={handleDrawerToggle}>
+            {theme.direction === "ltr" ? (
+              <ChevronLeftIcon />
+            ) : (
+              <ChevronRightIcon />
+            )}
+          </IconButton>
+        </DrawerHeader>
+      </Drawer>
     </>
   );
 };
