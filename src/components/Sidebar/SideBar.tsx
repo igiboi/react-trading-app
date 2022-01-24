@@ -4,7 +4,6 @@ import { styled, useTheme } from "@mui/material/styles";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 
-
 const DrawerHeader = styled("div")(({ theme }) => ({
   display: "flex",
   alignItems: "center",
@@ -33,7 +32,7 @@ export const SideBar: React.FC<Props> = ({
   children,
   handleDrawerToggle,
 }): JSX.Element => {
-    const theme = useTheme();
+  const theme = useTheme();
   return (
     <>
       <Drawer

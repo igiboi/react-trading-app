@@ -36,6 +36,7 @@ export const App: React.FC = (): JSX.Element => {
         handleDrawerToggle={handleDrawerToggle}
         onThemeChange={onThemeChange}
         isDarkMode={themeMode === "dark"}
+        isDrawerOpen={sideBarToggle}
       />
       <SideBar isOpen={sideBarToggle} handleDrawerToggle={handleDrawerToggle} />
     </ThemeProvider>

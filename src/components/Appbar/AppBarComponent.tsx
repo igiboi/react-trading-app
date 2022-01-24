@@ -13,20 +13,25 @@ interface Props {
   handleDrawerToggle: () => void;
   onThemeChange: () => void;
   isDarkMode: boolean;
-  // isDrawerOpen: boolean;
+  isDrawerOpen: boolean;
 }
 
 export const AppBarComponent: React.FC<Props> = ({
   handleDrawerToggle,
   onThemeChange,
   isDarkMode,
-  // isDrawerOpen,
+  isDrawerOpen,
 }): JSX.Element => {
   return (
     <div>
       <AppBar position="static" variant="elevation" className="appbar-wrapper">
         <Toolbar variant="dense">
-          <IconButton color="inherit" onClick={handleDrawerToggle} edge="start">
+          <IconButton
+            color="inherit"
+            onClick={handleDrawerToggle}
+            edge="start"
+            sx={{ mr: 2, ...(isDrawerOpen && { display: "none" }) }}
+          >
             <MenuIcon />
           </IconButton>
           <Typography variant="subtitle1" component="div" sx={{ flexGrow: 1 }}>
