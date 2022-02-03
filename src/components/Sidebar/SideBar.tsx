@@ -63,6 +63,8 @@ export const SideBar: React.FC<Props> = ({
             )}
           </IconButton>
         </DrawerHeader>
+        <Divider />
+        {children}
       </Drawer>
     </>
   );

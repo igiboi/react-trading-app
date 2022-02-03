@@ -5,7 +5,12 @@ import {
   CssBaseline,
   TextField,
 } from "@mui/material";
-import { AppBarComponent, SideBar } from "./components";
+import { AppBarComponent, SideBar, Menu } from "./components";
+import { BLOTTER, MAIN, ROUTES, TRADETICKET } from "./routes";
+import { Route, Routes } from "react-router";
+import { Blotter, Dashboard, TradeTicket } from "./features";
+
+
 
 export const App: React.FC = (): JSX.Element => {
   const [themeMode, setThemeMode] = useState<"light" | "dark">("dark");
@@ -38,7 +43,16 @@ export const App: React.FC = (): JSX.Element => {
         isDarkMode={themeMode === "dark"}
         isDrawerOpen={sideBarToggle}
       />
-      <SideBar isOpen={sideBarToggle} handleDrawerToggle={handleDrawerToggle} />
+      <SideBar
+        isOpen={sideBarToggle}
+        handleDrawerToggle={handleDrawerToggle}
+        children={<Menu links={ROUTES} />}
+      />
+       <Routes>
+          <Route  path={MAIN} element={<Dashboard />} />
+          <Route  path={BLOTTER} element={<Blotter />} />
+          <Route  path={TRADETICKET} element={<TradeTicket />} />
+        </Routes>
     </ThemeProvider>
   );
 };
