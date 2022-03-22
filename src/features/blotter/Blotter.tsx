@@ -1,3 +1,4 @@
+import { Typography } from "@mui/material";
 import React, { useCallback, useState } from "react";
 import { DataGrid } from "../../components";
 // import { useGetTradesQuery } from "../../services";
@@ -12,6 +13,7 @@ export const Blotter: React.FC = (): JSX.Element => {
 
   return (
     <div>
+      {/* <Typography> Blotter</Typography> */}
       <DataGrid
         gridData={[{ name: "typescript" }]}
         colDef={[{ field: "name" }]}
