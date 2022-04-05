@@ -1,19 +1,18 @@
-import React, { useState, useEffect } from "react";
-import { ColDef, RowClickedEvent, GridApi } from "ag-grid-community";
-import { useTheme, Theme } from "@emotion/react";
-import { styled } from "@mui/material";
-import { AgGridReact } from "ag-grid-react/lib/agGridReact";
+import React, { useEffect, useState } from "react";
+import { styled, useTheme } from "@mui/material";
+import { ColDef, GridApi, RowClickedEvent } from "ag-grid-community";
+import { AgGridReact } from "ag-grid-react";
 
 const GridStyledWrapper = styled("div")(({ theme }) => ({
   display: "flex",
   alignItems: "center",
-  width: "100",
+  width: "100%",
   padding: theme.spacing(2, 1),
   justifyContent: "center",
 }));
 
 interface DataGridProps<T> {
-  showNoRowsOverlay?: Boolean;
+  showNoRowsOverlay?: boolean;
   size: { height: number | string; width: number | string };
   gridData: T[];
   colDef: ColDef[];
@@ -28,11 +27,12 @@ export const DataGrid = <T,>({
   rowClickHandler = undefined,
 }: DataGridProps<T>): JSX.Element => {
   const [gridApi, setGridApi] = useState<GridApi>();
-  const [gridColumnApi, SetGridColumnApi] = useState(null);
-  const theme: Theme = useTheme();
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [gridColumnApi, setGridColumnApi] = useState(null);
+  const { palette } = useTheme();
   const onGridReady = (params: any) => {
     setGridApi(params.api);
-    SetGridColumnApi(params.columnApi);
+    setGridColumnApi(params.columnApi);
   };
 
   useEffect(() => {
@@ -41,13 +41,13 @@ export const DataGrid = <T,>({
     }
   }, [gridApi, showNoRowsOverlay]);
 
-
   return (
     <GridStyledWrapper>
       <div
         className={`${
-          theme === "dark" ? "ag-theme-alpine-dark" : "ag-theme-alpine"
+          palette.mode === "dark" ? "ag-theme-alpine-dark" : "ag-theme-alpine"
         }`}
+        style={{ ...size }}
       >
         <AgGridReact
           rowData={gridData}

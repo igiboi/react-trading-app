@@ -10,6 +10,8 @@ import { BLOTTER, MAIN, ROUTES, TRADETICKET } from "./routes";
 import { Route, Routes } from "react-router";
 import { Blotter, Dashboard, TradeTicket } from "./features";
 import { useNavigate } from 'react-router';
+import { Provider } from "react-redux";
+import { store } from "./store";
 
 
 export const App: React.FC = (): JSX.Element => {
@@ -45,6 +47,7 @@ export const App: React.FC = (): JSX.Element => {
   );
 
   return (
+    <Provider store={store}>
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <AppBarComponent
@@ -64,6 +67,7 @@ export const App: React.FC = (): JSX.Element => {
         <Route path={TRADETICKET} element={<TradeTicket />} />
       </Routes>
     </ThemeProvider>
+    </Provider>
   );
 };
 

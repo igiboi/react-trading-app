@@ -6,16 +6,16 @@ import {
   IconButton,
   Switch as ThemeSwitch,
 } from "@mui/material";
+import MenuIcon from "@mui/icons-material/Menu";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
-import MenuIcon from "@mui/icons-material/Menu";
+
 interface Props {
   handleDrawerToggle: () => void;
   onThemeChange: () => void;
   isDarkMode: boolean;
   isDrawerOpen: boolean;
 }
-
 export const AppBarComponent: React.FC<Props> = ({
   handleDrawerToggle,
   onThemeChange,
